@@ -100,7 +100,7 @@ html:not([data-agy-rtl-enabled="0"]) div[data-agy-fa="1"],
 html:not([data-agy-rtl-enabled="0"]) span[data-agy-fa="1"],
 html:not([data-agy-rtl-enabled="0"]) label[data-agy-fa="1"] {
   line-height: var(--agy-line-height, 1.85);
-  unicode-bidi: plaintext;
+  unicode-bidi: isolate;
 }
 
 html:not([data-agy-rtl-enabled="0"]) h1[data-agy-fa="1"],
