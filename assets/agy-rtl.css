@@ -1,0 +1,660 @@
+/* AGY_PERSIAN_RTL_V1 */
+@import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@100..900&display=swap');
+
+@font-face {
+  font-family: 'Vazirmatn';
+  src: local('Vazirmatn Thin'), local('Vazirmatn-Thin');
+  font-weight: 100;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Vazirmatn';
+  src: local('Vazirmatn ExtraLight'), local('Vazirmatn-ExtraLight');
+  font-weight: 200;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Vazirmatn';
+  src: local('Vazirmatn Light'), local('Vazirmatn-Light');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Vazirmatn';
+  src: local('Vazirmatn Regular'), local('Vazirmatn-Regular'), local('Vazirmatn'), local('Vazir');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Vazirmatn';
+  src: local('Vazirmatn Medium'), local('Vazirmatn-Medium'), local('Vazir Medium');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Vazirmatn';
+  src: local('Vazirmatn SemiBold'), local('Vazirmatn-SemiBold');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Vazirmatn';
+  src: local('Vazirmatn Bold'), local('Vazirmatn-Bold'), local('Vazir Bold');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Vazirmatn';
+  src: local('Vazirmatn ExtraBold'), local('Vazirmatn-ExtraBold');
+  font-weight: 800;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Vazirmatn';
+  src: local('Vazirmatn Black'), local('Vazirmatn-Black');
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+  --agy-persian-font: 'Vazirmatn', 'Vazir', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+  --agy-font-scale: 1;
+  --agy-line-height: 1.85;
+}
+
+html:not([data-agy-rtl-enabled="0"]) body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Inter', 'Vazirmatn', sans-serif;
+}
+
+/* Persian-detected prose blocks, questions, cards, and user bubbles */
+html:not([data-agy-rtl-enabled="0"]) [data-agy-fa="1"] {
+  font-family: var(--agy-persian-font) !important;
+  direction: rtl !important;
+  text-align: right !important;
+  letter-spacing: 0 !important;
+}
+
+/* Scale Persian text only on outermost RTL block to prevent nested em compounding */
+html:not([data-agy-rtl-enabled="0"]) [data-agy-fa="1"]:not([data-agy-fa="1"] *) {
+  font-size: calc(1em * var(--agy-font-scale, 1));
+}
+
+html:not([data-agy-rtl-enabled="0"]) p[data-agy-fa="1"],
+html:not([data-agy-rtl-enabled="0"]) li[data-agy-fa="1"],
+html:not([data-agy-rtl-enabled="0"]) blockquote[data-agy-fa="1"],
+html:not([data-agy-rtl-enabled="0"]) summary[data-agy-fa="1"],
+html:not([data-agy-rtl-enabled="0"]) td[data-agy-fa="1"],
+html:not([data-agy-rtl-enabled="0"]) th[data-agy-fa="1"],
+html:not([data-agy-rtl-enabled="0"]) dd[data-agy-fa="1"],
+html:not([data-agy-rtl-enabled="0"]) dt[data-agy-fa="1"],
+html:not([data-agy-rtl-enabled="0"]) div[data-agy-fa="1"],
+html:not([data-agy-rtl-enabled="0"]) span[data-agy-fa="1"],
+html:not([data-agy-rtl-enabled="0"]) label[data-agy-fa="1"] {
+  line-height: var(--agy-line-height, 1.85);
+  unicode-bidi: plaintext;
+}
+
+html:not([data-agy-rtl-enabled="0"]) h1[data-agy-fa="1"],
+html:not([data-agy-rtl-enabled="0"]) h2[data-agy-fa="1"],
+html:not([data-agy-rtl-enabled="0"]) h3[data-agy-fa="1"],
+html:not([data-agy-rtl-enabled="0"]) h4[data-agy-fa="1"],
+html:not([data-agy-rtl-enabled="0"]) h5[data-agy-fa="1"],
+html:not([data-agy-rtl-enabled="0"]) h6[data-agy-fa="1"] {
+  line-height: 1.55;
+  font-weight: 700;
+}
+
+/* OpenType Persian numerals (Vazirmatn ss01) — visual only, preserves ASCII digits on copy! */
+html[data-agy-fa-digits="1"]:not([data-agy-rtl-enabled="0"]) [data-agy-fa="1"],
+html[data-agy-fa-digits="1"]:not([data-agy-rtl-enabled="0"]) [data-agy-fa-row="1"] {
+  font-feature-settings: "ss01" 1;
+}
+
+/* Fix Tailwind's hardcoded left list padding ([&_ul]:pl-10 / [&_ol]:pl-10) for RTL lists */
+html:not([data-agy-rtl-enabled="0"]) ul[data-agy-fa="1"],
+html:not([data-agy-rtl-enabled="0"]) ol[data-agy-fa="1"],
+html:not([data-agy-rtl-enabled="0"]) [data-agy-fa="1"] > ul,
+html:not([data-agy-rtl-enabled="0"]) [data-agy-fa="1"] > ol {
+  direction: rtl !important;
+  text-align: right !important;
+  padding-right: 1.75rem !important;
+  padding-left: 0 !important;
+  margin-right: 0 !important;
+}
+
+html:not([data-agy-rtl-enabled="0"]) ul[data-agy-fa="1"]:has(> li.task-list-item),
+html:not([data-agy-rtl-enabled="0"]) ul.contains-task-list[data-agy-fa="1"] {
+  padding-right: 0.25rem !important;
+}
+
+/* Blockquotes and GitHub-style alerts */
+html:not([data-agy-rtl-enabled="0"]) blockquote[data-agy-fa="1"] {
+  border-left-width: 0 !important;
+  border-right-width: 3px !important;
+  border-right-style: solid;
+  padding-right: 1rem !important;
+  padding-left: 0.25rem !important;
+}
+
+/* Tables with Persian content */
+html:not([data-agy-rtl-enabled="0"]) table[data-agy-fa="1"] {
+  direction: rtl !important;
+}
+
+html:not([data-agy-rtl-enabled="0"]) table[data-agy-fa="1"] th,
+html:not([data-agy-rtl-enabled="0"]) table[data-agy-fa="1"] td {
+  text-align: right !important;
+  font-family: var(--agy-persian-font) !important;
+}
+
+/* Multiple-choice question rows, checkboxes, and radio options */
+html:not([data-agy-rtl-enabled="0"]) [data-agy-fa-row="1"] {
+  font-family: var(--agy-persian-font) !important;
+  direction: rtl !important;
+  text-align: right !important;
+  letter-spacing: 0 !important;
+}
+
+/* Chat input boxes (Lexical contenteditable & textarea) */
+html[data-agy-rtl-input="1"]:not([data-agy-rtl-enabled="0"]) textarea:not(.monaco-editor *):not(.xterm *):not(#agy-rtl-popover *),
+html[data-agy-rtl-input="1"]:not([data-agy-rtl-enabled="0"]) [contenteditable="true"]:not(.monaco-editor *):not(.xterm *),
+html[data-agy-rtl-input="1"]:not([data-agy-rtl-enabled="0"]) [contenteditable="true"]:not(.monaco-editor *):not(.xterm *) p {
+  font-family: var(--agy-persian-font) !important;
+  unicode-bidi: plaintext;
+}
+
+html[data-agy-rtl-input="1"]:not([data-agy-rtl-enabled="0"]) textarea[data-agy-fa="1"]:not(.monaco-editor *):not(.xterm *),
+html[data-agy-rtl-input="1"]:not([data-agy-rtl-enabled="0"]) [contenteditable="true"][data-agy-fa="1"]:not(.monaco-editor *):not(.xterm *) {
+  direction: rtl !important;
+  text-align: right !important;
+  line-height: var(--agy-line-height, 1.8);
+}
+
+html[data-agy-rtl-input="1"]:not([data-agy-rtl-enabled="0"]) [contenteditable="true"]:not(.monaco-editor *):not(.xterm *) [dir="rtl"] {
+  direction: rtl !important;
+  text-align: right !important;
+  line-height: var(--agy-line-height, 1.8);
+}
+
+html[data-agy-rtl-input="1"]:not([data-agy-rtl-enabled="0"]) [contenteditable="true"]:not(.monaco-editor *):not(.xterm *) [dir="ltr"] {
+  direction: ltr;
+  text-align: left;
+}
+
+/* Strict LTR isolation for code blocks, inline code, diffs, terminals, and math */
+pre,
+pre code,
+.monaco-editor,
+.monaco-diff-editor,
+.xterm,
+.katex,
+.katex-display,
+mjx-container {
+  direction: ltr !important;
+  text-align: left !important;
+  unicode-bidi: isolate !important;
+  font-feature-settings: normal !important;
+}
+
+html[data-agy-inline-code="1"]:not([data-agy-rtl-enabled="0"]) code:not(pre code),
+html[data-agy-inline-code="1"]:not([data-agy-rtl-enabled="0"]) kbd,
+html[data-agy-inline-code="1"]:not([data-agy-rtl-enabled="0"]) samp {
+  direction: ltr !important;
+  unicode-bidi: isolate !important;
+  font-feature-settings: normal !important;
+}
+
+html[data-agy-inline-code="1"]:not([data-agy-rtl-enabled="0"]) [data-agy-fa="1"] code:not(pre code) {
+  margin-inline: 2px;
+}
+
+/* ==========================================================================
+   Smart BiDi Shimmer & Text-Transition Animations (RTL vs LTR)
+   ========================================================================== */
+
+@keyframes agy-shimmer-text-mask-rtl {
+  0% {
+    transform: translateX(calc(200% / 3));
+  }
+  68%, 100% {
+    transform: translateX(0);
+  }
+}
+
+@keyframes agy-shimmer-text-content-rtl {
+  0% {
+    transform: translateX(-200%);
+  }
+  68%, 100% {
+    transform: translateX(0);
+  }
+}
+
+@keyframes agy-shimmer-text-rtl {
+  0% {
+    -webkit-mask-position: 0% 50%;
+    mask-position: 0% 50%;
+  }
+  68%, 100% {
+    -webkit-mask-position: 100% 50%;
+    mask-position: 100% 50%;
+  }
+}
+
+html:not([data-agy-rtl-enabled="0"]) .animate-shimmer-text[data-agy-fa="1"] {
+  unicode-bidi: isolate !important;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  html:not([data-agy-rtl-enabled="0"]) .animate-shimmer-text[data-agy-fa="1"] > .shimmer-text-mask {
+    animation-name: agy-shimmer-text-mask-rtl !important;
+  }
+
+  html:not([data-agy-rtl-enabled="0"]) .animate-shimmer-text[data-agy-fa="1"] > .shimmer-text-mask > .shimmer-text-content {
+    animation-name: agy-shimmer-text-content-rtl !important;
+  }
+
+  html:not([data-agy-rtl-enabled="0"]) .animate-shimmer-text[data-agy-fa="1"]:not(:has(> .shimmer-text-mask)) {
+    animation-name: agy-shimmer-text-rtl !important;
+  }
+}
+
+html:not([data-agy-rtl-enabled="0"]) [data-agy-fa="1"] [data-slot-out] {
+  left: auto !important;
+  right: 0 !important;
+}
+
+/* ==========================================================================
+   Top Header Toolbar Button & Persian Typography Studio Popover
+   ========================================================================== */
+
+#agy-rtl-toolbar-host {
+  display: inline-flex;
+  align-items: center;
+  margin-right: 4px;
+  -webkit-app-region: no-drag !important;
+  user-select: none;
+  z-index: 40;
+}
+
+#agy-rtl-toolbar-host.agy-floating-fallback {
+  position: fixed;
+  top: 6px;
+  right: 148px;
+  z-index: 2147483630;
+}
+
+.agy-tb-trigger {
+  all: unset;
+  box-sizing: border-box;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  height: 24px;
+  padding: 0 8px;
+  border-radius: 4px;
+  font-family: 'Vazirmatn', 'Segoe UI', sans-serif !important;
+  font-size: 11.5px;
+  font-weight: 500;
+  line-height: 1;
+  cursor: pointer;
+  -webkit-app-region: no-drag !important;
+  color: #E4E4E7;
+  background: rgba(255, 255, 255, 0.045);
+  border: 1px solid rgba(255, 255, 255, 0.10);
+  transition: background-color 0.14s ease, border-color 0.14s ease, color 0.14s ease;
+}
+
+.agy-tb-trigger:hover {
+  background: rgba(255, 255, 255, 0.095);
+  border-color: rgba(255, 255, 255, 0.18);
+}
+
+.agy-tb-trigger[data-open="1"] {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: rgba(255, 255, 255, 0.24);
+}
+
+#agy-rtl-toolbar-host[data-theme="light"] .agy-tb-trigger {
+  color: #27272A;
+  background: rgba(0, 0, 0, 0.04);
+  border-color: rgba(0, 0, 0, 0.12);
+}
+
+#agy-rtl-toolbar-host[data-theme="light"] .agy-tb-trigger:hover,
+#agy-rtl-toolbar-host[data-theme="light"] .agy-tb-trigger[data-open="1"] {
+  background: rgba(0, 0, 0, 0.08);
+  border-color: rgba(0, 0, 0, 0.20);
+}
+
+.agy-tb-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 999px;
+  background: #10B981;
+  box-shadow: 0 0 6px rgba(16, 185, 129, 0.55);
+  flex-shrink: 0;
+  transition: background-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.agy-tb-trigger[data-active="0"] .agy-tb-dot {
+  background: #71717A;
+  box-shadow: none;
+}
+
+.agy-tb-icon {
+  width: 13px;
+  height: 13px;
+  opacity: 0.78;
+  flex-shrink: 0;
+}
+
+#agy-rtl-popover {
+  position: fixed;
+  z-index: 2147483645;
+  width: 296px;
+  box-sizing: border-box;
+  direction: rtl !important;
+  text-align: right !important;
+  font-family: 'Vazirmatn', 'Vazir', 'Segoe UI', sans-serif !important;
+  font-size: 12px;
+  line-height: 1.5;
+  color: #F4F4F5;
+  background: rgba(24, 24, 27, 0.97);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.11);
+  border-radius: 9px;
+  box-shadow: 0 18px 42px rgba(0, 0, 0, 0.55), 0 2px 8px rgba(0, 0, 0, 0.35);
+  padding: 12px;
+  user-select: none;
+  -webkit-app-region: no-drag !important;
+}
+
+#agy-rtl-popover[hidden] {
+  display: none !important;
+}
+
+#agy-rtl-popover[data-theme="light"] {
+  color: #18181B;
+  background: rgba(255, 255, 255, 0.98);
+  border-color: rgba(0, 0, 0, 0.11);
+  box-shadow: 0 14px 34px rgba(0, 0, 0, 0.14), 0 2px 6px rgba(0, 0, 0, 0.06);
+}
+
+.agy-pop-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 10px;
+  margin-bottom: 10px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+#agy-rtl-popover[data-theme="light"] .agy-pop-header {
+  border-bottom-color: rgba(0, 0, 0, 0.08);
+}
+
+.agy-pop-title-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.agy-pop-title {
+  font-size: 12.5px;
+  font-weight: 700;
+}
+
+.agy-pop-sub {
+  font-size: 10.5px;
+  opacity: 0.55;
+  direction: ltr;
+  text-align: right;
+}
+
+.agy-pop-section {
+  margin-bottom: 10px;
+}
+
+.agy-pop-label {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 11px;
+  font-weight: 500;
+  opacity: 0.78;
+  margin-bottom: 5px;
+}
+
+.agy-seg-group {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 3px;
+  padding: 2px;
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+#agy-rtl-popover[data-theme="light"] .agy-seg-group {
+  background: rgba(0, 0, 0, 0.045);
+  border-color: rgba(0, 0, 0, 0.07);
+}
+
+.agy-seg-btn {
+  all: unset;
+  box-sizing: border-box;
+  text-align: center;
+  padding: 4px 4px;
+  font-size: 11px;
+  font-weight: 500;
+  border-radius: 4px;
+  cursor: pointer;
+  opacity: 0.72;
+  transition: background-color 0.12s ease, opacity 0.12s ease;
+}
+
+.agy-seg-btn:hover {
+  opacity: 1;
+}
+
+.agy-seg-btn[data-selected="1"] {
+  opacity: 1;
+  font-weight: 600;
+  background: rgba(255, 255, 255, 0.13);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.25);
+}
+
+#agy-rtl-popover[data-theme="light"] .agy-seg-btn[data-selected="1"] {
+  background: #FFFFFF;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12);
+}
+
+.agy-font-row {
+  display: flex;
+  gap: 5px;
+}
+
+.agy-select,
+.agy-custom-input {
+  box-sizing: border-box;
+  width: 100%;
+  height: 27px;
+  padding: 0 8px;
+  border-radius: 5px;
+  font-family: 'Vazirmatn', 'Segoe UI', sans-serif;
+  font-size: 11.5px;
+  color: inherit;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.10);
+  outline: none;
+}
+
+.agy-select option {
+  background: #18181B;
+  color: #F4F4F5;
+}
+
+#agy-rtl-popover[data-theme="light"] .agy-select,
+#agy-rtl-popover[data-theme="light"] .agy-custom-input {
+  background: rgba(0, 0, 0, 0.04);
+  border-color: rgba(0, 0, 0, 0.13);
+}
+
+#agy-rtl-popover[data-theme="light"] .agy-select option {
+  background: #FFFFFF;
+  color: #18181B;
+}
+
+.agy-custom-input {
+  margin-top: 5px;
+  direction: ltr;
+  text-align: left;
+}
+
+.agy-stepper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 27px;
+  padding: 0 4px;
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+}
+
+#agy-rtl-popover[data-theme="light"] .agy-stepper {
+  background: rgba(0, 0, 0, 0.045);
+  border-color: rgba(0, 0, 0, 0.08);
+}
+
+.agy-step-btn {
+  all: unset;
+  box-sizing: border-box;
+  width: 24px;
+  height: 21px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  background: rgba(255, 255, 255, 0.07);
+}
+
+.agy-step-btn:hover {
+  background: rgba(255, 255, 255, 0.15);
+}
+
+#agy-rtl-popover[data-theme="light"] .agy-step-btn {
+  background: rgba(0, 0, 0, 0.06);
+}
+
+#agy-rtl-popover[data-theme="light"] .agy-step-btn:hover {
+  background: rgba(0, 0, 0, 0.12);
+}
+
+.agy-step-val {
+  font-size: 11.5px;
+  font-weight: 600;
+  direction: ltr;
+}
+
+.agy-toggle-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 5px 0;
+  cursor: pointer;
+}
+
+.agy-toggle-text {
+  font-size: 11.5px;
+  opacity: 0.9;
+}
+
+.agy-switch {
+  all: unset;
+  box-sizing: border-box;
+  position: relative;
+  width: 32px;
+  height: 18px;
+  border-radius: 999px;
+  background: rgba(120, 120, 128, 0.36);
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: background-color 0.16s ease;
+}
+
+.agy-switch[data-on="1"] {
+  background: #10B981;
+}
+
+.agy-switch-knob {
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 14px;
+  height: 14px;
+  border-radius: 999px;
+  background: #FFFFFF;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+  transition: transform 0.16s ease;
+}
+
+.agy-switch[data-on="1"] .agy-switch-knob {
+  transform: translateX(14px);
+}
+
+.agy-pop-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 6px;
+  margin-top: 8px;
+  padding-top: 9px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+#agy-rtl-popover[data-theme="light"] .agy-pop-footer {
+  border-top-color: rgba(0, 0, 0, 0.08);
+}
+
+.agy-foot-btn {
+  all: unset;
+  box-sizing: border-box;
+  flex: 1;
+  text-align: center;
+  padding: 5px 6px;
+  border-radius: 5px;
+  font-size: 11px;
+  font-weight: 500;
+  cursor: pointer;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  transition: background-color 0.12s ease;
+}
+
+.agy-foot-btn:hover {
+  background: rgba(255, 255, 255, 0.12);
+}
+
+#agy-rtl-popover[data-theme="light"] .agy-foot-btn {
+  background: rgba(0, 0, 0, 0.045);
+  border-color: rgba(0, 0, 0, 0.10);
+}
+
+#agy-rtl-popover[data-theme="light"] .agy-foot-btn:hover {
+  background: rgba(0, 0, 0, 0.09);
+}

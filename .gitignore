@@ -1,0 +1,15 @@
+# Python caches
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Local runtime state & shortcut backups (machine-specific)
+state/
+
+# Temporary / backup files
+*.bak
+*.orig.bak
+*.rtl-tmp
+*.log
+.DS_Store
+Thumbs.db
