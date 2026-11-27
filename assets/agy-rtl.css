@@ -65,14 +65,41 @@
   font-display: swap;
 }
 
+/* Persian-only unicode-range face so Persian glyphs anywhere in the app (even inside slash-command / mention chips) always render in Vazirmatn instead of Windows Segoe UI */
+@font-face {
+  font-family: 'AgyVazirPersian';
+  src: local('Vazirmatn Regular'), local('Vazirmatn-Regular'), local('Vazirmatn'), local('Vazir');
+  font-weight: 100 400;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+0600-06FF, U+0750-077F, U+08A0-08FF, U+FB50-FDFF, U+FE70-FEFF, U+200C-200F;
+}
+@font-face {
+  font-family: 'AgyVazirPersian';
+  src: local('Vazirmatn Medium'), local('Vazirmatn-Medium'), local('Vazir Medium');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+0600-06FF, U+0750-077F, U+08A0-08FF, U+FB50-FDFF, U+FE70-FEFF, U+200C-200F;
+}
+@font-face {
+  font-family: 'AgyVazirPersian';
+  src: local('Vazirmatn Bold'), local('Vazirmatn-Bold'), local('Vazirmatn SemiBold'), local('Vazir Bold');
+  font-weight: 600 900;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+0600-06FF, U+0750-077F, U+08A0-08FF, U+FB50-FDFF, U+FE70-FEFF, U+200C-200F;
+}
+
 :root {
   --agy-persian-font: 'Vazirmatn', 'Vazir', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
   --agy-font-scale: 1;
   --agy-line-height: 1.85;
 }
 
-html:not([data-agy-rtl-enabled="0"]) body {
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Inter', 'Vazirmatn', sans-serif;
+html:not([data-agy-rtl-enabled="0"]) body,
+html:not([data-agy-rtl-enabled="0"]) .font-sans {
+  font-family: 'AgyVazirPersian', -apple-system, BlinkMacSystemFont, 'Inter', 'Segoe UI', 'Vazirmatn', sans-serif;
 }
 
 /* Persian-detected prose blocks, questions, cards, and user bubbles */
@@ -164,10 +191,10 @@ html:not([data-agy-rtl-enabled="0"]) [data-agy-fa-row="1"] {
   letter-spacing: 0 !important;
 }
 
-/* Chat input boxes (Lexical contenteditable & textarea) */
+/* Chat input boxes (Lexical contenteditable & textarea, including slash-command / mention tokens) */
 html[data-agy-rtl-input="1"]:not([data-agy-rtl-enabled="0"]) textarea:not(.monaco-editor *):not(.xterm *):not(#agy-rtl-popover *),
 html[data-agy-rtl-input="1"]:not([data-agy-rtl-enabled="0"]) [contenteditable="true"]:not(.monaco-editor *):not(.xterm *),
-html[data-agy-rtl-input="1"]:not([data-agy-rtl-enabled="0"]) [contenteditable="true"]:not(.monaco-editor *):not(.xterm *) p {
+html[data-agy-rtl-input="1"]:not([data-agy-rtl-enabled="0"]) [contenteditable="true"]:not(.monaco-editor *):not(.xterm *) *:not(code):not(pre):not(svg):not(.codicon) {
   font-family: var(--agy-persian-font) !important;
   unicode-bidi: plaintext;
 }

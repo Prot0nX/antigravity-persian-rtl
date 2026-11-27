@@ -297,30 +297,58 @@
     return info.hasPersian;
   }
 
+  var LAYOUT_SHELL_TAGS = {
+    SECTION: 1,
+    MAIN: 1,
+    ASIDE: 1,
+    NAV: 1,
+    HEADER: 1,
+    FOOTER: 1,
+    FORM: 1,
+    TABLE: 1,
+    UL: 1,
+    OL: 1
+  };
+
   function isLeafTextDivOrSpan(el) {
     var tag = el.tagName;
     if (tag !== 'DIV' && tag !== 'SPAN') return false;
     var childNodes = el.childNodes;
     if (!childNodes || childNodes.length === 0) return false;
-    if (el.children && el.children.length > 10) return false;
+    if (el.children && el.children.length > 20) return false;
 
     var hasDirectText = false;
+    var hasDirectPersianText = false;
+    var allChildrenInline = true;
+    var hasLayoutShellChild = false;
+
     for (var i = 0; i < childNodes.length; i++) {
       var c = childNodes[i];
       if (c.nodeType === 3) {
         if (c.nodeValue && c.nodeValue.trim().length > 0) {
           hasDirectText = true;
+          if (PERSIAN_RE.test(c.nodeValue)) {
+            hasDirectPersianText = true;
+          }
         }
       } else if (c.nodeType === 1) {
+        if (LAYOUT_SHELL_TAGS[c.tagName]) {
+          hasLayoutShellChild = true;
+        }
         if (!INLINE_PHRASING_TAGS[c.tagName]) {
-          return false;
+          allChildrenInline = false;
         }
       }
     }
-    if (!hasDirectText && (!el.children || el.children.length === 0)) {
+
+    if (hasLayoutShellChild) return false;
+    if (tag === 'SPAN' && el.parentElement && el.parentElement.closest('[data-agy-fa="1"]')) {
       return false;
     }
-    if (tag === 'SPAN' && el.parentElement && el.parentElement.closest('[data-agy-fa="1"]')) {
+    // Accept message bubbles containing a slash-command (/plan) or @mention chip alongside direct Persian text
+    if (hasDirectPersianText) return true;
+    if (!allChildrenInline) return false;
+    if (!hasDirectText && (!el.children || el.children.length === 0)) {
       return false;
     }
     return true;

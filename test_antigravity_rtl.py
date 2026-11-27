@@ -327,9 +327,14 @@ body.appendChild(headerRightOuter);
 const pFa = el('p', {}, 'این یک متن فارسی همراه با ', el('code', {}, 'app.asar'), ' است.');
 const pEngFirstFa = el('p', {}, 'Antigravity یک محیط توسعه هوشمند است.');
 const pEn = el('p', {}, 'Run ', el('code', {}, 'npm test'), ' to verify.');
+const slashCmdBubble = el('div', { class: 'user-msg' },
+  el('div', { class: 'slash-chip' }, el('svg', {}), el('span', {}, 'plan')),
+  'شروع کن و هرجا نیاز بود سوال کن و تائیدیه بگیر'
+);
 body.appendChild(pFa);
 body.appendChild(pEngFirstFa);
 body.appendChild(pEn);
+body.appendChild(slashCmdBubble);
 
 // Animated shimmer status bars (Persian vs English + deeply nested GSc transition slot)
 const shimmerFaInner = el('span', { class: 'text-muted-foreground' }, 'بررسی process_auto_delivery و سازوکار قیمت‌گذاری');
@@ -424,6 +429,8 @@ for (const fn of (docListeners['keydown'] || [])) {
 assert.strictEqual(html.getAttribute('data-agy-rtl-enabled'), '1', 'Alt+Shift+R re-enables RTL');
 assert.strictEqual(pEngFirstFa.getAttribute('dir'), 'rtl');
 assert.strictEqual(pEn.getAttribute('data-agy-fa'), null);
+assert.strictEqual(slashCmdBubble.getAttribute('dir'), 'rtl', 'Slash-command (/plan) bubble with Persian text must be RTL');
+assert.strictEqual(slashCmdBubble.getAttribute('data-agy-fa'), '1', 'Slash-command (/plan) bubble must get Vazirmatn RTL marker');
 
 console.log('ALL_V2_TOOLBAR_AND_DOM_ASSERTIONS_PASSED');
 """
