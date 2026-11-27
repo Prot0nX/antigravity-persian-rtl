@@ -192,29 +192,32 @@ html:not([data-agy-rtl-enabled="0"]) [data-agy-fa-row="1"] {
 }
 
 /* Chat input boxes (Lexical contenteditable & textarea, including slash-command / mention tokens) */
-html[data-agy-rtl-input="1"]:not([data-agy-rtl-enabled="0"]) textarea:not(.monaco-editor *):not(.xterm *):not(#agy-rtl-popover *),
-html[data-agy-rtl-input="1"]:not([data-agy-rtl-enabled="0"]) [contenteditable="true"]:not(.monaco-editor *):not(.xterm *),
-html[data-agy-rtl-input="1"]:not([data-agy-rtl-enabled="0"]) [contenteditable="true"]:not(.monaco-editor *):not(.xterm *) *:not(code):not(pre):not(svg):not(.codicon) {
+html[data-agy-rtl-input="1"]:not([data-agy-rtl-enabled="0"]) textarea:not(.monaco-editor *):not(.xterm *):not(#agy-rtl-popover *) {
   font-family: var(--agy-persian-font) !important;
   unicode-bidi: plaintext;
 }
 
-html[data-agy-rtl-input="1"]:not([data-agy-rtl-enabled="0"]) textarea[data-agy-fa="1"]:not(.monaco-editor *):not(.xterm *),
-html[data-agy-rtl-input="1"]:not([data-agy-rtl-enabled="0"]) [contenteditable="true"][data-agy-fa="1"]:not(.monaco-editor *):not(.xterm *) {
+html[data-agy-rtl-input="1"]:not([data-agy-rtl-enabled="0"]) [contenteditable="true"]:not(.monaco-editor *):not(.xterm *),
+html[data-agy-rtl-input="1"]:not([data-agy-rtl-enabled="0"]) [contenteditable="true"]:not(.monaco-editor *):not(.xterm *) *:not(code):not(pre):not(svg):not(.codicon) {
+  font-family: var(--agy-persian-font) !important;
+}
+
+html[data-agy-rtl-input="1"]:not([data-agy-rtl-enabled="0"]) textarea[data-agy-fa="1"]:not(.monaco-editor *):not(.xterm *) {
   direction: rtl !important;
   text-align: right !important;
+  unicode-bidi: normal !important;
   line-height: var(--agy-line-height, 1.8);
 }
 
-html[data-agy-rtl-input="1"]:not([data-agy-rtl-enabled="0"]) [contenteditable="true"]:not(.monaco-editor *):not(.xterm *) [dir="rtl"] {
+/* Override Lexical's internal <p dir="ltr"> via CSS when root has Persian text so Chromium places the caret accurately at the visual left end */
+html[data-agy-rtl-input="1"]:not([data-agy-rtl-enabled="0"]) [contenteditable="true"][data-agy-fa="1"]:not(.monaco-editor *):not(.xterm *),
+html[data-agy-rtl-input="1"]:not([data-agy-rtl-enabled="0"]) [contenteditable="true"][data-agy-fa="1"]:not(.monaco-editor *):not(.xterm *) > p,
+html[data-agy-rtl-input="1"]:not([data-agy-rtl-enabled="0"]) [contenteditable="true"][data-agy-fa="1"]:not(.monaco-editor *):not(.xterm *) > div,
+html[data-agy-rtl-input="1"]:not([data-agy-rtl-enabled="0"]) [contenteditable="true"][data-agy-fa="1"]:not(.monaco-editor *):not(.xterm *) [dir="ltr"] {
   direction: rtl !important;
   text-align: right !important;
+  unicode-bidi: normal !important;
   line-height: var(--agy-line-height, 1.8);
-}
-
-html[data-agy-rtl-input="1"]:not([data-agy-rtl-enabled="0"]) [contenteditable="true"]:not(.monaco-editor *):not(.xterm *) [dir="ltr"] {
-  direction: ltr;
-  text-align: left;
 }
 
 /* Strict LTR isolation for code blocks, inline code, diffs, terminals, and math */
